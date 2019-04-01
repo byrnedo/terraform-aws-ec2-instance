@@ -33,7 +33,6 @@ resource "aws_instance" "this" {
   instance_initiated_shutdown_behavior = "${var.instance_initiated_shutdown_behavior}"
   placement_group                      = "${var.placement_group}"
   tenancy                              = "${var.tenancy}"
-  user_data                            = "${var.user_data}"
 
   tags = "${merge(map("Name", (var.instance_count > 1) || (var.use_num_suffix == "true") ? format("%s-%d", var.name, count.index+1) : var.name), var.tags)}"
 
@@ -73,7 +72,6 @@ resource "aws_instance" "this_t2" {
   instance_initiated_shutdown_behavior = "${var.instance_initiated_shutdown_behavior}"
   placement_group                      = "${var.placement_group}"
   tenancy                              = "${var.tenancy}"
-  user_data                            = "${var.user_data}"
 
   credit_specification {
     cpu_credits = "${var.cpu_credits}"
